@@ -16,7 +16,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from processing.views import UploadCSV, CheckStatus
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('image-processor/upload/', UploadCSV.as_view(), name='upload_csv'),
+    path('image-processor/status/<str:request_id>/', CheckStatus.as_view(), name='check_status'),
 ]
